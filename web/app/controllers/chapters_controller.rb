@@ -23,6 +23,10 @@ class ChaptersController < ApplicationController
   def create
     @chapter = Chapter.new(chapter_params)
 
+    if chapter_params[:chapter_file].present?
+      @chapter.chapter_file.attach(params[:chapter_file])
+    end
+
     respond_to do |format|
       if @chapter.save
         format.html { redirect_to chapter_url(@chapter), notice: "Chapter was successfully created." }
@@ -65,6 +69,6 @@ class ChaptersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chapter_params
-      params.fetch(:chapter, {})
+      params.require(:chapter).permit(:chapter_file)
     end
 end
