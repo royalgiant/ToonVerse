@@ -1,0 +1,28 @@
+{
+  "name": "toonverse-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1194.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "ipfs-core": "^0.15.4",
+    "js-ipfs-fetch": "^4.2.1",
+    "mime-types": "^2.1.35",
+    "nft.storage": "^7.0.0",
+    "nodemon": "^2.0.19",
+    "socket.io": "^2.3.0",
+    "truffle-contract": "^4.0.31",
+    "web3": "^1.7.5"
+  },
+  "type": "module"
+}
