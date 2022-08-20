@@ -17,7 +17,7 @@ import ethers from "ethers"
 import ToonVerse from '../artifacts/contracts/ToonVerse.sol/ToonVerse.json' assert {type: 'json'};
 
 // Provider
-const alchemyProvider = new ethers.providers.AlchemyProvider(process.env.ETHEREUM_NETWORK, process.env.ALCHEMY_API_KEY);
+const alchemyProvider = new ethers.providers.AlchemyProvider(process.env.MUMBAI_NETWORK, process.env.ALCHEMY_API_KEY);
 // Signer
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, alchemyProvider);
 // Contract
@@ -43,7 +43,7 @@ async function storeImageNFT(id, image, content_type, name, description) {
   return metadata.url
 }
 
-app.get('/upload_and_mint/:id/:name/:description', async (req,res)=>{
+app.post('/upload_and_mint/:id/:name/:description', cors(), async (req,res)=>{
     var req = req.params
     var params = {
       Bucket: process.env.S3_BUCKET_DEV,
@@ -61,7 +61,9 @@ app.get('/upload_and_mint/:id/:name/:description', async (req,res)=>{
     res.json({metadata_url: metadata_url, txHash: receipt.transactionHash})
 })
 
-app.use(cors())
+app.use(cors({
+  origin: '*'
+}))
 
 app.listen(port, () => {
   console.log(`ToonVerse listening on port ${port}`)
