@@ -26,7 +26,7 @@ contract ToonVerse is ERC721URIStorage, ERC2981, Ownable {
     _burn(tokenId);
   }
 
-  function mintNFT(address recipient, string memory tokenURI) public onlyOwner returns (uint256) {
+  function mintNFT(address recipient, string memory tokenURI) public returns (uint256) {
     _tokenIds.increment();
 
     uint256 newItemId = _tokenIds.current();
@@ -36,7 +36,7 @@ contract ToonVerse is ERC721URIStorage, ERC2981, Ownable {
     return newItemId;
   }
 
-  function mintNFTWithRoyalty(address recipient, string memory tokenURI, address royaltyReceiver, uint96 feeNumerator) public onlyOwner returns (uint256) {
+  function mintNFTWithRoyalty(address recipient, string memory tokenURI, address royaltyReceiver, uint96 feeNumerator) public returns (uint256) {
     uint256 tokenId = mintNFT(recipient, tokenURI);
     _setTokenRoyalty(tokenId, royaltyReceiver, feeNumerator);
 

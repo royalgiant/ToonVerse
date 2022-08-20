@@ -25,5 +25,9 @@
     "truffle-contract": "^4.0.31",
     "web3": "^1.7.5"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.1.1",
+    "ethers": "^5.7.0"
+  }
 }
